@@ -32,6 +32,9 @@ export default function DraftPage() {
     setTeam(newTeam);
   };
 
+  const positionMap = ["top", "jgl", "mid", "bot", "sup"];
+  const currentRole = modalIndex !== null ? positionMap[modalIndex] : null;
+
   return (
     <div className="draft-page">
       <h1>Draft équipe</h1>
@@ -51,6 +54,7 @@ export default function DraftPage() {
         isOpen={modalIndex !== null}
         onSelect={handleChampionSelect}
         onClose={() => setModalIndex(null)}
+        role={currentRole}
       />
     </div>
   );

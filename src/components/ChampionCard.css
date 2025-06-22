@@ -37,7 +37,7 @@
   color: #ff7b00;
 }
 
-.tier {
+.tier-notation {
   position: absolute;
   top: 5px;
   left: 7px;
@@ -51,6 +51,14 @@
   color: lightskyblue;
 }
 
+.winrate:hover {
+  border-color: lightskyblue;
+}
+
+.winrate.active {
+  border-color: lightskyblue;
+}
+
 .complementary-infos {
   display: flex;
   justify-content: space-between;
@@ -62,7 +70,23 @@
   color: greenyellow;
 }
 
+.pickrate:hover {
+  border-color: greenyellow;
+}
+
+.pickrate.active {
+  border-color: greenyellow;
+}
+
 .banrate {
   font-weight: bold;
   color: crimson;
+}
+
+.banrate:hover {
+  border-color: crimson;
+}
+
+.banrate.active {
+  border-color: crimson;
 }

@@ -32,7 +32,7 @@ export default function ChampionCard({ champion, onClick, onRemove }) {
           }}>✕</div>
           <img src={champion.img} alt={champion.name} width="64" />
           <h3>{champion.name}</h3>
-          <p className="tier" style={{ color: getTierColor(champion.tier) }}>
+          <p className="tier-notation" style={{ color: getTierColor(champion.tier) }}>
             {champion.tier != null ? `${champion.tier}` : `N/A`}
           </p>
           <p className="winrate">
