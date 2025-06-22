@@ -5,7 +5,7 @@ export default function ChampionPicker({ isOpen, onSelect, onClose }) {
   const [champions, setChampions] = useState([]);
 
   useEffect(() => {
-    fetch("/champions.json")
+    fetch(import.meta.env.BASE_URL + "champions.json")
       .then((res) => res.json())
       .then(setChampions);
   }, []);
