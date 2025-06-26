@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import ChampionCard from "../components/ChampionCard";
 import ChampionPicker from "../components/ChampionPicker";
 import "./DraftPage.css";
@@ -15,7 +15,7 @@ export default function DraftPage() {
     const pickrate = champ.pickrate?.[role] ?? null;
     const banrate = champ.banrate ?? null;
     const updated = [...team];
-    updated[modalIndex] = { ...champ, tier, winrate, pickrate, banrate };
+    updated[modalIndex] = { ...champ, tier, winrate, pickrate, banrate, role };
     setTeam(updated);
     setModalIndex(null);
   };
