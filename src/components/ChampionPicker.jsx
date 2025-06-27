@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./ChampionPicker.css";
 
-export default function ChampionPicker({ isOpen, onSelect, onClose, role }) {
+export default function ChampionPicker({ isOpen, onSelect, onClose, role, zoom }) {
   const [champions, setChampions] = useState([]);
   const [sortKey, setSortKey] = useState("tier");
 
@@ -42,6 +42,21 @@ export default function ChampionPicker({ isOpen, onSelect, onClose, role }) {
     }
   };
 
+  const laner = (role) => {
+    switch (role) {
+      case "top":
+        return "Top-laner";
+      case "jgl":
+        return "Jungle";
+      case "mid":
+        return "Mid-laner";
+      case "bot":
+        return "AD-Carry";
+      case "sup":
+        return "Support";
+    }
+  };
+
   useEffect(() => {
     fetch(import.meta.env.BASE_URL + "champions.json")
       .then((res) => res.json())
@@ -51,9 +66,9 @@ export default function ChampionPicker({ isOpen, onSelect, onClose, role }) {
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
+    <div className="modal-overlay" onClick={onClose} style={{ zoom: `${-zoom}%` }}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <h3>Choisis un champion</h3>
+        <h3>Choisis un {laner(role)}</h3>
         <div className="sort-buttons-wrapper">
           <div className="sort-buttons">
             <button onClick={() => setSortKey("tier")} className={`tier ${sortKey === "tier" ? "active" : ""}`}>Tier</button>

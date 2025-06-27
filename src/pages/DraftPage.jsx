@@ -6,6 +6,14 @@ import "./DraftPage.css";
 export default function DraftPage() {
   const [team, setTeam] = useState([null, null, null, null, null]);
   const [modalIndex, setModalIndex] = useState(null);
+  const [zoom, setZoom] = useState(100);
+  
+  const increaseZoom = () => {
+    setZoom(prev => Math.min(prev + 10, 250));
+  };
+  const decreaseZoom = () => {
+    setZoom(prev => Math.max(prev - 10, 100));
+  };
 
   const handleChampionSelect = (champ) => {
     const positionMap = ["top", "jgl", "mid", "bot", "sup"];
@@ -37,25 +45,31 @@ export default function DraftPage() {
 
   return (
     <div className="draft-page">
-      <h1>Draft équipe</h1>
-      <div className="draft-team">
-        {team.map((champ, i) => (
-          <ChampionCard
-            key={i}
-            champion={champ}
-            onClick={() => setModalIndex(i)}
-            onRemove={() => removeChampion(i)}
-          />
-        ))}
+      <div style={{ zoom: `${zoom}%` }}>
+        <h1>Draft équipe</h1>
+        <div className="zoom-controls">
+          <button className="minus" onClick={decreaseZoom} disabled={zoom <= 100}>-</button>
+          <button onClick={increaseZoom} disabled={zoom >= 250}>+</button>
+        </div>
+        <div className="draft-team">
+          {team.map((champ, i) => (
+            <ChampionCard
+              key={i}
+              champion={champ}
+              onClick={() => setModalIndex(i)}
+              onRemove={() => removeChampion(i)}
+            />
+          ))}
+        </div>
+        <h2>Champion Winrate moyen : {averageWR()}</h2>
       </div>
-      <h2>Winrate moyen : {averageWR()}</h2>
-
-      <ChampionPicker
-        isOpen={modalIndex !== null}
-        onSelect={handleChampionSelect}
-        onClose={() => setModalIndex(null)}
-        role={currentRole}
-      />
+        <ChampionPicker
+          isOpen={modalIndex !== null}
+          onSelect={handleChampionSelect}
+          onClose={() => setModalIndex(null)}
+          role={currentRole}
+          zoom={zoom}
+        />
     </div>
   );
 }

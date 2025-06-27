@@ -142,7 +142,7 @@ export default function ChampionCard({ champion, onClick, onRemove }) {
             </>
           ) : (
             <>
-              <p>Choix du Joueur sur <strong>{champion?.name}</strong></p>
+              <p>Choix du <strong>Joueur</strong> sur <strong>{champion?.name}</strong></p>
               <input
                 type="text"
                 placeholder="Nom du joueur"

@@ -9,6 +9,28 @@
   color: #ff8400;
 }
 
+.zoom-controls {
+  position: absolute;
+  display: flex;
+  gap: 5px;
+  top: 15px;
+  left: 15px;
+}
+
+.zoom-controls button {
+  display: flex;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.minus {
+  align-items: center;
+}
+
 .draft-team {
   display: flex;
   justify-content: center;
